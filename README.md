@@ -13,9 +13,6 @@ This project demonstrates a **quadtree-based algorithm** to **compress** and **d
 2. [Data Structures](#data-structures)  
 3. [Features](#features)  
 4. [Usage](#usage)  
-5. [Implementation Details](#implementation-details)  
-6. [Credits](#credits)
-
 ---
 
 ## Overview
