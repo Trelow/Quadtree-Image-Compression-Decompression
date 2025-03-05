@@ -80,3 +80,11 @@ This project demonstrates a **quadtree-based algorithm** to **compress** and **d
 ```bash
 ./quadtree -d <input.bin> <output.ppm>
 ```
+
+### Normal Image
+
+![alt text](image.png)
+
+### Compressed Image (THRESHOLD = 40)
+
+![alt text](image-1.png)
