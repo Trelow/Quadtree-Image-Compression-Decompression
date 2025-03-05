@@ -59,6 +59,16 @@ void free_queue(queue_t *queue) {
 
 // ... Image functions ... //
 
+// Function to skip comments in PPM file
+void skip_comments(FILE *file) {
+  int c;
+  while ((c = fgetc(file)) == '#') {
+    while ((c = fgetc(file)) != '\n' && c != EOF)
+      ; // Skip the entire comment line
+  }
+  ungetc(c, file);
+}
+
 // Function to read a PPM image file
 pixel_t **read_image(const char *filename, int *width, int *height) {
   int i;
@@ -75,6 +85,10 @@ pixel_t **read_image(const char *filename, int *width, int *height) {
     printf("Image format must be 'P6')\n");
     return NULL;
   }
+
+  // Skip comments
+  skip_comments(file);
+
   // Read image size information
   fscanf(file, "%d %d\n", width, height);
   // Check if image is 2^n x 2^n
@@ -145,6 +159,7 @@ void write_image_to_PPM(pixel_t **image, unsigned int size, char *file_name) {
       fwrite(&(image[i][j]), sizeof(pixel_t), 1, file);
     }
   }
+
   fclose(file);
 }
 
